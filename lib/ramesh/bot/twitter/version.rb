@@ -1,6 +1,6 @@
 module Ramesh
   module Bot
-    module Twitter
+    class Twitter
       VERSION = "0.0.1"
     end
   end
