@@ -5,7 +5,7 @@ module Ramesh
         KEYS = %i(consumer_key consumer_secret access_token access_token_secret white_list)
 
         KEYS.each do |key|
-          define_method(k) { @options[k] }
+          define_method(key) { @options[key] }
         end
 
         DEFAULTS = {
