@@ -13,7 +13,7 @@ module Ramesh
         @options = options
       end
 
-      def run
+      def start
         load_config
         tweet_loop
       end
