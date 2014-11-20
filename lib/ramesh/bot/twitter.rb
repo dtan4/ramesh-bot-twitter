@@ -19,20 +19,20 @@ module Ramesh
       end
 
       def rest_client
-        @rest_client ||= Twitter::REST::Client.new do |config|
+        @rest_client ||= ::Twitter::REST::Client.new do |config|
           config.consumer_key = @config.consumer_key
           config.consumer_secret = @config.consumer_secret
           config.access_token = @config.access_token
-          config.access_token_secret = @config.access_secret
+          config.access_token_secret = @config.access_token_secret
         end
       end
 
       def streaming_client
-        @streaming_client ||= Twitter::Streaming::Client.new do |config|
+        @streaming_client ||= ::Twitter::Streaming::Client.new do |config|
           config.consumer_key = @config.consumer_key
           config.consumer_secret = @config.consumer_secret
           config.access_token = @config.access_token
-          config.access_token_secret = @config.access_secret
+          config.access_token_secret = @config.access_token_secret
         end
       end
 
@@ -47,12 +47,14 @@ module Ramesh
       end
 
       def tweet_loop
-        @streaming_client.user do |object|
-          next unless object.is_a?(Twitter::Tweet)
-          tweet_user_name = object.user.screen_name
-          next unless @config.white_list.empty? || @config.white_list.include?(tweet_user_name)
+        streaming_client.user do |object|
+          if object.is_a?(::Twitter::Tweet)
+            tweet_user_name = object.user.screen_name
 
-          logger.info tweet_user_name
+            if @config.white_list.empty? || @config.white_list.include?(tweet_user_name)
+              logger.info tweet_user_name
+            end
+          end
         end
       end
     end
