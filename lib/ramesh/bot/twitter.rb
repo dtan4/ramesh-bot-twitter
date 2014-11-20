@@ -9,8 +9,8 @@ module Ramesh
     class Twitter
       attr_reader :config
 
-      def initialize(argv)
-        @argv = argv
+      def initialize(options)
+        @options = options
       end
 
       def run
@@ -43,7 +43,7 @@ module Ramesh
       private
 
       def load_config
-        @config = Config.new(@argv)
+        @config = Config.new(@options)
       end
 
       def tweet_loop
