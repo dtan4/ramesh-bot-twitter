@@ -52,7 +52,7 @@ module Ramesh
             tweet_user_name = object.user.screen_name
 
             if @config.white_list.empty? || @config.white_list.include?(tweet_user_name)
-              logger.info tweet_user_name
+              rest_client.update("@#{tweet_user_name} #{Time.now}", in_reply_to_status_id: object.id)
             end
           end
         end
