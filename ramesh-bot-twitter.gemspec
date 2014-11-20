@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Ramesh::Bot::Twitter::VERSION
   spec.authors       = ["Daisuke Fujita"]
   spec.email         = ["dtanshi45@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = %q{Ramesh Twitter bot}
+  spec.description   = %q{Ramesh Twitter bot}
+  spec.homepage      = "https://github.com/dtan4/ramesh-twitter-bot"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
