@@ -13,6 +13,7 @@ module Ramesh
 
       def initialize(options)
         @options = options
+        STDOUT.sync = true
       end
 
       def start
@@ -47,7 +48,7 @@ module Ramesh
       end
 
       def logger
-        @logger ||= Logger.new($stdout)
+        @logger ||= Logger.new(STDOUT)
       end
 
       private
@@ -62,8 +63,10 @@ module Ramesh
             reply_to_screen_name = object.user.screen_name
 
             if reply_to_screen_name != screen_name &&
-              (@config.white_list.empty? || @config.white_list.include?(tweet_user_name))
-              rest_client.update_with_media("@#{reply_to_screen_name}", download_image, in_reply_to_status_id: object.id)
+                (@config.white_list.empty? || @config.white_list.include?(tweet_user_name))
+              logger.info(object.full_text)
+              reply = rest_client.update_with_media("@#{reply_to_screen_name}", download_image, in_reply_to_status_id: object.id)
+              logger.info(reply.full_text)
             end
           end
         end
