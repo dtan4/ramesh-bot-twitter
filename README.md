@@ -26,8 +26,8 @@ Or install it yourself as:
 4. Clone this repository and deploy to Heroku
 
 ```shell
-$ git clone https://github.com/dtan4/ramesh-bot-twitter.git
-$ cd ramesh-bot-twitter
+$ git clone https://github.com/dtan4/ramesh-bot-twitter.git your-ramesh-bot
+$ cd your-ramesh-bot
 $ heroku create your-ramesh-bot
 $ git push heroku master
 $ heroku config:set \
@@ -35,7 +35,7 @@ $ heroku config:set \
   RAMESH_BOT_ACCESS_TOKEN_SECRET=... \
   RAMESH_BOT_CONSUMER_KEY=... \
   RAMESH_BOT_CONSUMER_SECRET=...\
-  RAMESH_BOT_SCREEN_NAME=your-bot-screen-name
+  RAMESH_BOT_SCREEN_NAME=your-ramesh-bot-screen-name
 $ heroku ps:scale bot=1
 ```
 
@@ -47,7 +47,6 @@ key | description | required
 `RAMESH_BOT_ACCESS_TOKEN_SECRET` | Access token secret | o
 `RAMESH_BOT_CONSUMER_KEY` | Consumer key | o
 `RAMESH_BOT_CONSUMER_SECRET` | Consumer secret | o
-`RAMESH_BOT_ACCESS_TOKEN` | access token | o
 `RAMESH_BOT_SCREEN_NAME` | Screen name of your bot | o
 `RAMESH_BOT_WHITE_LIST` | White list of screen names, which are allowed to send request |
 
