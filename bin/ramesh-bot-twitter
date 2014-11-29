@@ -7,7 +7,8 @@ options = {
   consumer_secret:     ENV["RAMESH_BOT_CONSUMER_SECRET"] || "",
   access_token:        ENV["RAMESH_BOT_ACCESS_TOKEN"] || "",
   access_token_secret: ENV["RAMESH_BOT_ACCESS_TOKEN_SECRET"] || "",
-  white_list:          ENV["RAMESH_BOT_WHITE_LIST"] ? ENV["RAMESH_BOT_WHITE_LIST"].split(",") : []
+  screen_name:         ENV["RAMESH_BOT_SCREEN_NAME"] || "",
+  white_list:          ENV["RAMESH_BOT_WHITE_LIST"] ? ENV["RAMESH_BOT_WHITE_LIST"].split(",") : [],
 }
 
 bot = Ramesh::Bot::Twitter.new(options)
