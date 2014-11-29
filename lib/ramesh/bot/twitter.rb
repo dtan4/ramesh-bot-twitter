@@ -64,9 +64,15 @@ module Ramesh
 
             if reply_to_screen_name != screen_name &&
                 (@config.white_list.empty? || @config.white_list.include?(tweet_user_name))
-              logger.info(object.full_text)
-              reply = rest_client.update_with_media("@#{reply_to_screen_name}", download_image, in_reply_to_status_id: object.id)
-              logger.info(reply.full_text)
+              image = download_image
+
+              begin
+                logger.info(object.full_text)
+                reply = rest_client.update_with_media("@#{reply_to_screen_name}", image, in_reply_to_status_id: object.id)
+                logger.info(reply.full_text)
+              ensure
+                image.close
+              end
             end
           end
         end
